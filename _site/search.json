@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "posts/Module 2/index.html",
+    "href": "posts/Module 2/index.html",
+    "title": "Module # 2: Assignment: Importing Data and Function Evaluation in R",
+    "section": "",
+    "text": "This my Module #2 post for my LIS4370 blog. Welcome!\nTasks # 1 & 2\nI have downloaded and reviewed the data import instructions. The ‘readr’ functions are more familiar to me than the ‘tidyr’ and I have experience reading and writing various data sets with .csv, .tsv, and html links. I have also read the assigned Chapters.\nTask # 3\nEvaluate the ‘myMean()’ function:"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R Programming Journal - Robert Walsh",
+    "section": "",
+    "text": "Module # 2: Assignment: Importing Data and Function Evaluation in R\n\n\n\n\n\n\n\n\n\n\n\nAug 29, 2025\n\n\nRobert Walsh\n\n\n\n\n\n\n\n\n\n\n\n\nModule # 1: Assignment #1:\n\n\n\n\n\n\n\n\n\n\n\nAug 24, 2025\n\n\nRobert Walsh\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "UNIVERSITY OF SOUTH FLORIDA - SCHOOL OF INFORMATION STUDENT\nA blog for sharing my class assignments."
+  },
+  {
+    "objectID": "posts/Module 1/index.html",
+    "href": "posts/Module 1/index.html",
+    "title": "Module # 1: Assignment #1:",
+    "section": "",
+    "text": "This my first post for my LIS4370 blog. Welcome!\nTask # 1\nI have successfully created a GitHub repository named: r-programming-assignments\nHere is a screenshot of the repository and README.md:\n\nTasks # 2 & 3\nI have also created a blog titled “R Programming Journal – Robert Walsh”.\nHere is a screenshot of the blog and installed R Studio console:\n\nThe installation of R Studio was straightforward, mainly because I had already installed the program and IDE on my machine for a different course here at USF. One issue I had was connecting the blog project to the new GitHub repository. I resolved this problem by copying the commands that GitHub generated when the repository was created and then running them in the R Studio terminal. This worked well and connected the R Studio blog project to the Git Hub version control repository. A second issue that I encountered was software updates. I had not used R Studio for quite some time; therefore, I needed to complete some updates. After the updates were completed, I was able to use the software and the IDE. I am currently on a Windows 11 PC, using version ‘R 4.4.2’ and R Studio version ‘2024.12.0.467’.\nTask # 4\nWhen using the R programming language, vectors are fundamental objects or entities that serve as containers for storing data elements or data values. Vector container objects can be used in various ways to store data in the computer’s memory, and the vector addresses/information can be referenced at a later time, throughout the program to recall the values that are stored within them. Vectors are fundamental to data analysis in R because they have the ability and flexibility to have descriptive names that represent the data that they contain. The functions and applications in R Programming utilize the vector abstraction ability to enable programs to perform vector math and use vector elements as input parameters in functions. Results from calculations and analysis can be updated and stored in new or existing vectors, allowing further data analysis."
+  }
+]

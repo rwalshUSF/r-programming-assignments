@@ -1,0 +1,10 @@
+---
+title: "About Me"
+image: profile.jpg
+about:
+  template: jolla
+---
+
+UNIVERSITY OF SOUTH FLORIDA - SCHOOL OF INFORMATION STUDENT
+
+A blog for sharing my class assignments.

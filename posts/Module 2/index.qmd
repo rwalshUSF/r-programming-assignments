@@ -1,0 +1,17 @@
+---
+title: "Module # 2: Assignment: Importing Data and Function Evaluation in R"
+author: "Robert Walsh"
+date: "2025-08-29"
+---
+
+This my Module #2 post for my LIS4370 blog. Welcome!
+
+Tasks \# 1 & 2
+
+I have downloaded and reviewed the data import instructions. The 'readr' functions are more familiar to me than the 'tidyr' and I have experience reading and writing various data sets with .csv, .tsv, and html links. I have also read the assigned Chapters.
+
+Task \# 3
+
+Evaluate the 'myMean()' function:
+
+![](functionerrormsg.png)

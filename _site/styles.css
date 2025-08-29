@@ -1,0 +1,12 @@
+/* css styles */
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+
+h1.title {
+  font-family: "Gothic A1";
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+body {
+  background-color: beige;
+}

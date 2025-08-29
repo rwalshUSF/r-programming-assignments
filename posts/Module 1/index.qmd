@@ -1,0 +1,29 @@
+---
+title: "Module # 1: Assignment #1:"
+author: "Robert Walsh"
+date: "2025-08-24"
+---
+
+This my first post for my LIS4370 blog. Welcome!
+
+Task \# 1
+
+I have successfully created a GitHub repository named: r-programming-assignments
+
+Here is a screenshot of the repository and README.md:
+
+![](repository.png)
+
+Tasks \# 2 & 3
+
+I have also created a blog titled “R Programming Journal – Robert Walsh”.
+
+Here is a screenshot of the blog and installed R Studio console:
+
+![](blogRstudio.png)
+
+The installation of R Studio was straightforward, mainly because I had already installed the program and IDE on my machine for a different course here at USF. One issue I had was connecting the blog project to the new GitHub repository. I resolved this problem by copying the commands that GitHub generated when the repository was created and then running them in the R Studio terminal. This worked well and connected the R Studio blog project to the Git Hub version control repository. A second issue that I encountered was software updates. I had not used R Studio for quite some time; therefore, I needed to complete some updates. After the updates were completed, I was able to use the software and the IDE. I am currently on a Windows 11 PC, using version ‘R 4.4.2’ and R Studio version ‘2024.12.0.467’.
+
+Task \# 4
+
+When using the R programming language, vectors are fundamental objects or entities that serve as containers for storing data elements or data values. Vector container objects can be used in various ways to store data in the computer's memory, and the vector addresses/information can be referenced at a later time, throughout the program to recall the values that are stored within them. Vectors are fundamental to data analysis in R because they have the ability and flexibility to have descriptive names that represent the data that they contain. The functions and applications in R Programming utilize the vector abstraction ability to enable programs to perform vector math and use vector elements as input parameters in functions. Results from calculations and analysis can be updated and stored in new or existing vectors, allowing further data analysis.
