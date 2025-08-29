@@ -44,3 +44,7 @@ The function call for 'myMean(assignment2)' fails because the variable names ins
 ```
 
 Here is a screenshot of my GitHub repository that shows the blog link and the corrected myMean function .R file: ![](mod2github.png)
+
+Blog link:
+
+<https://rwalshusf.quarto.pub/httpsrwalshusfquartopubr-programming-journal---robert-walsh/>
