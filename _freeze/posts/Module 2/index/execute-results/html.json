@@ -1,0 +1,15 @@
+{
+  "hash": "9db4ecef74007fb96bf22ddaa1edad40",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Module # 2: Assignment: Importing Data and Function Evaluation in R\"\nexecute: \n  error: true\nauthor: \"Robert Walsh\"\ndate: \"2025-08-29\"\n---\n\n\n\nThis my Module #2 post for my LIS4370 blog. Welcome!\n\nTasks \\# 1 & 2\n\nI have downloaded and reviewed the data import instructions. The 'readr' functions are more familiar to me than the 'tidyr' and I have experience reading and writing various data sets with .csv, .tsv, and html links. I have also read the assigned Chapters.\n\nTask \\# 3\n\nEvaluate the 'myMean()' function:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Use the vector:\n\nassignment2 <- c(16, 18, 14, 22, 27, 17, 19, 17, 17, 22, 20, 22)\n\n# Consider the function:\n\nmyMean <- function(assignment2) {\n  return(sum(assignment) / length(someData))\n}\n\n# Run myMean(assignment2) and record the output or error:\nmyMean(assignment2)\n```\n\n::: {.cell-output .cell-output-error}\n\n```\nError in myMean(assignment2): object 'assignment' not found\n```\n\n\n:::\n\n```{.r .cell-code}\n# The result or error message from testing myMean(assignment2):\n```\n:::\n\n\n![](error.png)\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

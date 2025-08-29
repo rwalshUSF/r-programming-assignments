@@ -1,5 +1,7 @@
 ---
 title: "Module # 2: Assignment: Importing Data and Function Evaluation in R"
+execute: 
+  error: true
 author: "Robert Walsh"
 date: "2025-08-29"
 ---
@@ -14,4 +16,21 @@ Task \# 3
 
 Evaluate the 'myMean()' function:
 
-![](functionerrormsg.png)
+```{r}
+# Use the vector:
+
+assignment2 <- c(16, 18, 14, 22, 27, 17, 19, 17, 17, 22, 20, 22)
+
+# Consider the function:
+
+myMean <- function(assignment2) {
+  return(sum(assignment) / length(someData))
+}
+
+# Run myMean(assignment2) and record the output or error:
+myMean(assignment2)
+
+# The result or error message from testing myMean(assignment2):
+```
+![](error.png)
+
