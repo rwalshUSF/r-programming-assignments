@@ -34,3 +34,14 @@ myMean(assignment2)
 ```
 ![](error.png)
 
+The function call for 'myMean(assignment2)' fails because the variable names inside the functions instructions are incorrect. The function takes an argument or input parameter of 'assignment2' and the instructions attempt to reference objects named 'assignment' in the sum() function and 'someData' in the length() function.
+
+```{r}
+#| echo: true
+#| eval: true 
+#| file: myMeanFunction.R
+```
+
+Here is a screenshot of my GitHub repository that shows the blog link and the corrected myMean function .R file:
+
+
