@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Robert Walsh">
-<meta name="dcterms.date" content="2025-08-29">
+<meta name="dcterms.date" content="2025-09-05">
 
-<title>Module # 2: Assignment: Importing Data and Function Evaluation in R – R Programming Journal - Robert Walsh</title>
+<title>Module # 3: Assignment: Importing Data and Function Evaluation in R – R Programming Journal - Robert Walsh</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Module # 2: Assignment: Importing Data and Function Evaluation in R</h1>
+      <h1 class="title">Module # 3: Assignment: Importing Data and Function Evaluation in R</h1>
                       </div>
   </div>
     
@@ -156,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 29, 2025</p>
+        <p class="date">September 5, 2025</p>
       </div>
     </div>
     
@@ -175,50 +175,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This my Module #2 post for my LIS4370 blog. Welcome!</p>
-<p>Tasks # 1 &amp; 2</p>
-<p>I have downloaded and reviewed the data import instructions. The ‘readr’ functions are more familiar to me than the ‘tidyr’ and I have experience reading and writing various data sets with .csv, .tsv, and html links. I have also read the assigned Chapters.</p>
-<p>Task # 3</p>
-<p>Evaluate the ‘myMean()’ function:</p>
+<p>This my Module #3 post for my LIS4370 blog. Welcome!</p>
+<p>Tasks # 1 - Define and Inspect your data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the vector:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>assignment2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">14</span>, <span class="dv">22</span>, <span class="dv">27</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">22</span>, <span class="dv">20</span>, <span class="dv">22</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consider the function:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>myMean <span class="ot">&lt;-</span> <span class="cf">function</span>(assignment2) {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(assignment) <span class="sc">/</span> <span class="fu">length</span>(someData))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Run myMean(assignment2) and record the output or error:</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">myMean</span>(assignment2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in myMean(assignment2): object 'assignment' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The result or error message from testing myMean(assignment2):</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="error.png" class="img-fluid"></p>
-<p>The function call for ‘myMean(assignment2)’ fails because the variable names inside the functions instructions are incorrect. The function takes an argument or input parameter of ‘assignment2’ and the instructions attempt to reference objects named ‘assignment’ in the sum() function and ‘someData’ in the length() function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a corrected version of the myMean() function that correctly returns</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the mean of 'assignment2'</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>assignment2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">14</span>, <span class="dv">22</span>, <span class="dv">27</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">22</span>, <span class="dv">20</span>, <span class="dv">22</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>myMean <span class="ot">&lt;-</span> <span class="cf">function</span>(assignment2) {</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(assignment2) <span class="sc">/</span> <span class="fu">length</span>(assignment2))</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Run myMean(assignment2) and record the output:</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">myMean</span>(assignment2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In R, create vectors (correcting any syntax issues)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Name<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Jeb"</span>,<span class="st">"Donald"</span>,<span class="st">"Ted"</span>,<span class="st">"Marco"</span>,<span class="st">"Carly"</span>,<span class="st">"Hillary"</span>,<span class="st">"Bernie"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ABC_poll<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">62</span>,<span class="dv">51</span>,<span class="dv">21</span>,<span class="dv">2</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>CBS_poll<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">75</span>,<span class="dv">43</span>,<span class="dv">19</span>,<span class="dv">1</span>,<span class="dv">21</span>,<span class="dv">19</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into a data frame</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df_polls<span class="ot">&lt;-</span><span class="fu">data.frame</span>(Name,ABC_poll,CBS_poll)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Use str() and head() to inspect your data frame</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_polls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 19.25</code></pre>
+<pre><code>'data.frame':   7 obs. of  3 variables:
+ $ Name    : chr  "Jeb" "Donald" "Ted" "Marco" ...
+ $ ABC_poll: num  4 62 51 21 2 14 15
+ $ CBS_poll: num  12 75 43 19 1 21 19</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_polls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Name ABC_poll CBS_poll
+1     Jeb        4       12
+2  Donald       62       75
+3     Ted       51       43
+4   Marco       21       19
+5   Carly        2        1
+6 Hillary       14       21</code></pre>
 </div>
 </div>
-<p>Here is a screenshot of my GitHub repository that shows the blog link and the corrected myMean function .R file: <img src="mod2github.png" class="img-fluid"></p>
-<p>Blog link:</p>
-<p><a href="https://rwalshusf.quarto.pub/httpsrwalshusfquartopubr-programming-journal---robert-walsh/" class="uri">https://rwalshusf.quarto.pub/httpsrwalshusfquartopubr-programming-journal---robert-walsh/</a></p>
+<p>Task # 2 - Compute Summary Statistics</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the mean, median, and range for each poll</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mean for ABC poll</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_polls<span class="sc">$</span>ABC_poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24.14286</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># median for ABC poll</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(df_polls<span class="sc">$</span>ABC_poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># range for ABC poll</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(df_polls<span class="sc">$</span>ABC_poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2 62</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean for CBS poll</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_polls<span class="sc">$</span>CBS_poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27.14286</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># median for CBS poll</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(df_polls<span class="sc">$</span>CBS_poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># range for CBS poll</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(df_polls<span class="sc">$</span>CBS_poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1 75</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column for the difference between CBS and ABC</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_polls<span class="sc">$</span>Diff<span class="ot">&lt;-</span>df_polls<span class="sc">$</span>CBS_poll<span class="sc">-</span>df_polls<span class="sc">$</span>ABC_poll</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Tasks # 3 &amp; 4 - Discuss and Reflect after reading text and programming analysis</p>
+<p>On your blog, write 2–3 paragraphs addressing:</p>
+<p>Key patterns you observe (e.g., which candidate shows the largest discrepancies).</p>
+<p>When looking at the data frame and the poll count values for each candidate, the data looks well organized at first with each candidates name and the estimated poll results side by side in each corresponding row for that candidate. The means for each poll are rather close with ABC_poll = ~24 and CBS_poll ~27 for a difference of ~3. The medians have slightly more variance as the ABC_polls = 15 and the CBS_polls = 19, a difference of 4. The ranges are close as well with the ABC_polls ranging from 2-62 and the CBS_polls from 1-75.</p>
+<p>When the ‘Diff’ column is calculated with CBS_poll-ABC_poll values: Donald shows the largest positive discrepancies and Ted shows the largest negative discrepancies.</p>
+<p>When the ‘Diff’ column is calculated with ABC_poll-CBS_poll values: Ted shows the largest positive discrepancies and Donald shows the largest negative discrepancies.</p>
+<p>Impact of using made‑up data—what limitations does this introduce?</p>
+<p>The main impact and risks/limitations of using made up data seems to be the method chosen for evaluating the difference between the two polls. Depending on which poll value is subtracted from the other has a large impact on the final result. For ex. the results look much different in favor of one candidate for another when ABC_polls values are subtracted from CBS_polls values versus CBS_polls values are subtracted from ABC_polls values.</p>
+<p>How you might collect or validate real poll data in a true analysis.</p>
+<p>One strategy I would implement to collect or validate real poll data in a true analysis would be to label the difference specifically or to add a two bar visualization that shows the counts side by side to display the difference rather than using a subtraction method.</p>
+<p>Include your R code (in a code chunk) and the generated plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df_polls<span class="sc">$</span>Name<span class="ot">&lt;-</span><span class="fu">as.factor</span>(df_polls<span class="sc">$</span>Name)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is the bar chart showing the difference between CBS_poll-ABC_poll</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_polls,<span class="fu">aes</span>(<span class="at">x=</span>Name,<span class="at">y=</span>Diff, <span class="at">color=</span>Diff, <span class="at">fill=</span>Diff))<span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)<span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Difference between polls"</span>)<span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Difference between CBS_poll-ABC_poll"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-calculate the Diff column for the difference between ABC and CBS</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_polls<span class="sc">$</span>Diff<span class="ot">&lt;-</span>df_polls<span class="sc">$</span>ABC_poll<span class="sc">-</span>df_polls<span class="sc">$</span>CBS_poll</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is the bar chart showing the difference between ABC_poll-CBS_poll</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_polls,<span class="fu">aes</span>(<span class="at">x=</span>Name,<span class="at">y=</span>Diff, <span class="at">color=</span>Diff, <span class="at">fill=</span>Diff))<span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)<span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Difference between polls"</span>)<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Difference between ABC_poll-CBS_poll"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 
