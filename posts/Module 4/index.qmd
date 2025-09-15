@@ -8,7 +8,7 @@ This is my Module #4 post for my LIS4370 blog. Welcome!
 
 Code repository:
 
-![](images/mod4git.png){width="1000"}
+![](mod4git.png)
 
 <https://github.com/rwalshUSF/RProgrammingFall2025WalshRobert/tree/main/assignments/assignment-04-programming-structure>
 
