@@ -1,0 +1,112 @@
+---
+title: "Module # 8: Assignment: Input/Output, String Manipulation, and the plyr Package"
+author: "Robert Walsh"
+date: "2025-10-13"
+---
+
+This is my Module #8 post for my LIS4370 blog. Welcome!
+
+Code repository:
+
+[![](mod8git.png)](mod8git.png)
+
+<https://github.com/rwalshUSF/RProgrammingFall2025WalshRobert/tree/main/assignments/assignment-08-Input-Output-string>
+
+------------------------------------------------------------------------
+
+Task \# 1 - Import Assignment 6 Data
+
+------------------------------------------------------------------------
+
+In order to read a text file from a computer into RStudio, the working directory must be specified or set. Then calling the read.table() function will read the file in table format and creates a data frame from it, with records corresponding to lines and variables/values to fields in the file.
+
+```{r}
+#Place the Assignment 6 dataset (tab‑ or space‑delimited) on your computer.
+#In R, read it into a data frame:
+
+#set working directory
+setwd("C:/R Programming Journal – Robert Walsh/posts/Module 8")
+# choose file
+student6 <- read.table("Assignment 6 Dataset.txt", header = TRUE, stringsAsFactors = FALSE,sep = ",")
+student6
+```
+
+Next, the 'student6' data frame stored in memory can be used to organize or group specific records along with the data or text that they contain in their elements or components. The 'plyr' package contains helpful functions such as ddply() which can accept arguments to select specific rows and/or columns of a data frame, conduct operations on the data, and add new columns or rows that have the results organized as specified by the commands. In this case, the results are stored in a new object named 'gender_mean' that includes a new column named 'GradeAverage' that stores the mean of Grade by Sex and groups the records by Sex.
+
+```{r}
+#Load plyr and compute the mean of Grade by Sex
+library(plyr)
+gender_mean <- ddply(
+  student6,
+  "Sex",
+  transform,
+  GradeAverage = mean(Grade, na.rm = TRUE)
+)
+gender_mean
+```
+
+The write.table() function is a helpful tool in RStudio that allows a program to write data from a data frame into a text file and store it in the working directory.
+
+```{r}
+#Write the grouped means to a text file
+write.table(
+  gender_mean,
+  file = "gender_mean.txt",
+  sep  = ",",
+  row.names = FALSE
+)
+```
+
+------------------------------------------------------------------------
+
+Task \# 2 - Filter Names Containing 'i'
+
+------------------------------------------------------------------------
+
+To conduct further analysis or operations on a subset of the data in the 'student6' data frame, the subset() function allows the program to filter character data in strings with regular expressions. The data frame is passed into the function as an argument, along with the reg ex expression using the grep() function. This matches the data to the specified parameters and returns matching values or records as indicated/requested. The results include students who's Name includes an 'i' or 'I' character.
+
+```{r}
+#Convert the data (if not already) to a data frame (see above).
+#Select rows where Name contains 'i' or 'I'
+i_students <- subset(
+  student6,
+  grepl("[iI]", Name, ignore.case = TRUE)
+)
+i_students
+```
+
+From this subset/data frame, the Names of the selected students can be extracted and written to a .csv comma separated values file in the working directory for further operations or analysis specifications.
+
+```{r}
+#Extract just the names and write them to a CSV
+write.csv(
+  i_students$Name,
+  file      = "i_students.csv",
+  row.names = FALSE,
+  quote     = FALSE
+)
+```
+
+------------------------------------------------------------------------
+
+Task \# 3 - Export Filtered Dataset
+
+------------------------------------------------------------------------
+
+Finally, all of the records in the 'i_students' data frame can be exported to a .csv comma separated values file in the working directory or any specified directory chosen for further operations or analysis.
+
+```{r}
+#Save the full filtered data frame to a CSV
+write.csv(
+  i_students,
+  file      = "i_students_full.csv",
+  row.names = FALSE
+)
+
+#Confirm the files gender_mean.txt, i_students.csv, and i_students_full.csv
+#exist in your working directory.
+```
+
+[![](wd_files.png)](wd_files.png)
+
+

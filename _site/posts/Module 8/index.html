@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Robert Walsh">
+<meta name="dcterms.date" content="2025-10-13">
 
-<title>R Programming Journal - Robert Walsh</title>
+<title>Module # 8: Assignment: Input/Output, String Manipulation, and the plyr Package – R Programming Journal - Robert Walsh</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0de45b8b5f35a93596f1d788d60c4c11.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bf0e22026d841e37432379943e210428.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0de45b8b5f35a93596f1d788d60c4c11.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-bf0e22026d841e37432379943e210428.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +102,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">R Programming Journal - Robert Walsh</span>
     </a>
   </div>
@@ -149,7 +125,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
 </ul>
@@ -162,266 +138,189 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">R Programming Journal - Robert Walsh</h1>
+    <div class="quarto-title column-body">
+      <h1 class="title">Module # 8: Assignment: Input/Output, String Manipulation, and the plyr Package</h1>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Robert Walsh </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 13, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>This is my Module #8 post for my LIS4370 blog. Welcome!</p>
+<p>Code repository:</p>
+<p><a href="mod8git.png"><img src="mod8git.png" class="img-fluid"></a></p>
+<p><a href="https://github.com/rwalshUSF/RProgrammingFall2025WalshRobert/tree/main/assignments/assignment-08-Input-Output-string" class="uri">https://github.com/rwalshUSF/RProgrammingFall2025WalshRobert/tree/main/assignments/assignment-08-Input-Output-string</a></p>
+<hr>
+<p>Task # 1 - Import Assignment 6 Data</p>
+<hr>
+<p>In order to read a text file from a computer into RStudio, the working directory must be specified or set. Then calling the read.table() function will read the file in table format and creates a data frame from it, with records corresponding to lines and variables/values to fields in the file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Place the Assignment 6 dataset (tab‑ or space‑delimited) on your computer.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#In R, read it into a data frame:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#set working directory</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/R Programming Journal – Robert Walsh/posts/Module 8"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># choose file</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>student6 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"Assignment 6 Dataset.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,<span class="at">sep =</span> <span class="st">","</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>student6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Name Age    Sex Grade
+1       Raul  25   Male    80
+2     Booker  18   Male    83
+3      Lauri  21 Female    90
+4     Leonie  21 Female    91
+5    Sherlyn  22 Female    85
+6    Mikaela  20 Female    69
+7    Raphael  23   Male    91
+8       Aiko  24 Female    97
+9   Tiffaney  21 Female    78
+10    Corina  23 Female    81
+11 Petronila  23 Female    98
+12    Alecia  20 Female    87
+13   Shemika  23 Female    97
+14    Fallon  22 Female    90
+15   Deloris  21 Female    67
+16    Randee  23 Female    91
+17     Eboni  20 Female    84
+18   Delfina  19 Female    93
+19 Ernestina  19 Female    93
+20      Milo  19   Male    67</code></pre>
+</div>
+</div>
+<p>Next, the ‘student6’ data frame stored in memory can be used to organize or group specific records along with the data or text that they contain in their elements or components. The ‘plyr’ package contains helpful functions such as ddply() which can accept arguments to select specific rows and/or columns of a data frame, conduct operations on the data, and add new columns or rows that have the results organized as specified by the commands. In this case, the results are stored in a new object named ‘gender_mean’ that includes a new column named ‘GradeAverage’ that stores the mean of Grade by Sex and groups the records by Sex.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load plyr and compute the mean of Grade by Sex</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>gender_mean <span class="ot">&lt;-</span> <span class="fu">ddply</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  student6,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Sex"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  transform,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">GradeAverage =</span> <span class="fu">mean</span>(Grade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>gender_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Name Age    Sex Grade GradeAverage
+1      Lauri  21 Female    90      86.9375
+2     Leonie  21 Female    91      86.9375
+3    Sherlyn  22 Female    85      86.9375
+4    Mikaela  20 Female    69      86.9375
+5       Aiko  24 Female    97      86.9375
+6   Tiffaney  21 Female    78      86.9375
+7     Corina  23 Female    81      86.9375
+8  Petronila  23 Female    98      86.9375
+9     Alecia  20 Female    87      86.9375
+10   Shemika  23 Female    97      86.9375
+11    Fallon  22 Female    90      86.9375
+12   Deloris  21 Female    67      86.9375
+13    Randee  23 Female    91      86.9375
+14     Eboni  20 Female    84      86.9375
+15   Delfina  19 Female    93      86.9375
+16 Ernestina  19 Female    93      86.9375
+17      Raul  25   Male    80      80.2500
+18    Booker  18   Male    83      80.2500
+19   Raphael  23   Male    91      80.2500
+20      Milo  19   Male    67      80.2500</code></pre>
+</div>
+</div>
+<p>The write.table() function is a helpful tool in RStudio that allows a program to write data from a data frame into a text file and store it in the working directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Write the grouped means to a text file</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  gender_mean,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"gender_mean.txt"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep  =</span> <span class="st">","</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<p>Task # 2 - Filter Names Containing ‘i’</p>
+<hr>
+<p>To conduct further analysis or operations on a subset of the data in the ‘student6’ data frame, the subset() function allows the program to filter character data in strings with regular expressions. The data frame is passed into the function as an argument, along with the reg ex expression using the grep() function. This matches the data to the specified parameters and returns matching values or records as indicated/requested. The results include students who’s Name includes an ‘i’ or ‘I’ character.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Convert the data (if not already) to a data frame (see above).</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Select rows where Name contains 'i' or 'I'</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>i_students <span class="ot">&lt;-</span> <span class="fu">subset</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  student6,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grepl</span>(<span class="st">"[iI]"</span>, Name, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>i_students</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Name Age    Sex Grade
+3      Lauri  21 Female    90
+4     Leonie  21 Female    91
+6    Mikaela  20 Female    69
+8       Aiko  24 Female    97
+9   Tiffaney  21 Female    78
+10    Corina  23 Female    81
+11 Petronila  23 Female    98
+12    Alecia  20 Female    87
+13   Shemika  23 Female    97
+15   Deloris  21 Female    67
+17     Eboni  20 Female    84
+18   Delfina  19 Female    93
+19 Ernestina  19 Female    93
+20      Milo  19   Male    67</code></pre>
+</div>
+</div>
+<p>From this subset/data frame, the Names of the selected students can be extracted and written to a .csv comma separated values file in the working directory for further operations or analysis specifications.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract just the names and write them to a CSV</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  i_students<span class="sc">$</span>Name,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file      =</span> <span class="st">"i_students.csv"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">quote     =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<p>Task # 3 - Export Filtered Dataset</p>
+<hr>
+<p>Finally, all of the records in the ‘i_students’ data frame can be exported to a .csv comma separated values file in the working directory or any specified directory chosen for further operations or analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Save the full filtered data frame to a CSV</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  i_students,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file      =</span> <span class="st">"i_students_full.csv"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Confirm the files gender_mean.txt, i_students.csv, and i_students_full.csv</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#exist in your working directory.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="wd_files.png"><img src="wd_files.png" class="img-fluid"></a></p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1760328000000" data-listing-file-modified-sort="1760377621078" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="540">
-<div class="thumbnail">
-<p><a href="./posts/Module 8/index.html" class="no-external"></a></p><a href="./posts/Module 8/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\Module 8\mod8git.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Module 8/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Module 8/index.html" class="no-external">Module # 8: Assignment: Input/Output, String Manipulation, and the plyr Package</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Module 8/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Module 8/index.html" class="no-external">This is my Module #8 post for my LIS4370 blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Module 8/index.html" class="no-external">
-<div class="listing-date">
-Oct 13, 2025
-</div>
-<div class="listing-author">
-Robert Walsh
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1759896000000" data-listing-file-modified-sort="1759942080216" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="738">
-<div class="thumbnail">
-<p><a href="./posts/Module 7/index.html" class="no-external"></a></p><a href="./posts/Module 7/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\Module 7\mod7git.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Module 7/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Module 7/index.html" class="no-external">Module # 7: Assignment: Exploring R’s Object Oriented Systems (S3 &amp; S4)</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Module 7/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Module 7/index.html" class="no-external">This is my Module #7 post for my LIS4370 blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Module 7/index.html" class="no-external">
-<div class="listing-date">
-Oct 8, 2025
-</div>
-<div class="listing-author">
-Robert Walsh
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1758859200000" data-listing-file-modified-sort="1758921296272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="504">
-<div class="thumbnail">
-<p><a href="./posts/Module 6/index.html" class="no-external"></a></p><a href="./posts/Module 6/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\Module 6\mod6git.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Module 6/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Module 6/index.html" class="no-external">Module # 6: Assignment: Matrix Operations and Construction</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Module 6/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Module 6/index.html" class="no-external">This is my Module #6 post for my LIS4370 blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Module 6/index.html" class="no-external">
-<div class="listing-date">
-Sep 26, 2025
-</div>
-<div class="listing-author">
-Robert Walsh
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1758513600000" data-listing-file-modified-sort="1758564312077" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="346">
-<div class="thumbnail">
-<p><a href="./posts/Module 5/index.html" class="no-external"></a></p><a href="./posts/Module 5/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\Module 5\mod5.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Module 5/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Module 5/index.html" class="no-external">Module # 5: Assignment: Matrix Algebra in R</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Module 5/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Module 5/index.html" class="no-external">This is my Module #5 post for my LIS4370 blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Module 5/index.html" class="no-external">
-<div class="listing-date">
-Sep 22, 2025
-</div>
-<div class="listing-author">
-Robert Walsh
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1757908800000" data-listing-file-modified-sort="1757975032794" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="593">
-<div class="thumbnail">
-<p><a href="./posts/Module 4/index.html" class="no-external"></a></p><a href="./posts/Module 4/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\Module 4\mod4git.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Module 4/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Module 4/index.html" class="no-external">Module # 4: Assignment: Programming Structure in R</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Module 4/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Module 4/index.html" class="no-external">This is my Module #4 post for my LIS4370 blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Module 4/index.html" class="no-external">
-<div class="listing-date">
-Sep 15, 2025
-</div>
-<div class="listing-author">
-Robert Walsh
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1757044800000" data-listing-file-modified-sort="1757080123331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="476">
-<div class="thumbnail">
-<p><a href="./posts/Module 3/index.html" class="no-external"></a></p><a href="./posts/Module 3/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\Module 3\index_files\figure-html\unnamed-chunk-4-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Module 3/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Module 3/index.html" class="no-external">Module # 3: Assignment: Introduction to data.frame</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Module 3/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Module 3/index.html" class="no-external">This my Module #3 post for my LIS4370 blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Module 3/index.html" class="no-external">
-<div class="listing-date">
-Sep 5, 2025
-</div>
-<div class="listing-author">
-Robert Walsh
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1756440000000" data-listing-file-modified-sort="1756499056498" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172">
-<div class="thumbnail">
-<p><a href="./posts/Module 2/index.html" class="no-external"></a></p><a href="./posts/Module 2/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\Module 2\error.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Module 2/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Module 2/index.html" class="no-external">Module # 2: Assignment: Importing Data and Function Evaluation in R</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Module 2/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Module 2/index.html" class="no-external">This my Module #2 post for my LIS4370 blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Module 2/index.html" class="no-external">
-<div class="listing-date">
-Aug 29, 2025
-</div>
-<div class="listing-author">
-Robert Walsh
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1756008000000" data-listing-file-modified-sort="1756491726038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="330">
-<div class="thumbnail">
-<p><a href="./posts/Module 1/index.html" class="no-external"></a></p><a href="./posts/Module 1/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\Module 1\repository.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Module 1/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Module 1/index.html" class="no-external">Module # 1: Assignment #1:</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Module 1/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Module 1/index.html" class="no-external">This my first post for my LIS4370 blog. Welcome!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Module 1/index.html" class="no-external">
-<div class="listing-date">
-Aug 24, 2025
-</div>
-<div class="listing-author">
-Robert Walsh
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
