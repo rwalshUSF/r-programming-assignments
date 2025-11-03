@@ -158,6 +158,11 @@ tryCatch({
 
 # Identify the faulty function & Fix the Code
 
+```
+
+[![](debug2.png)](debug2.png)
+
+```{r}
 # Edit the function so that tukey.outlier() is removed.
 corrected_tukey_multiple <- function(x) {
   # Create array
@@ -188,7 +193,6 @@ tryCatch({
   })
 ```
 
-[![](debug2.png)](debug2.png)
 
 ------------------------------------------------------------------------
 
