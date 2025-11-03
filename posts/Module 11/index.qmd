@@ -1,0 +1,271 @@
+---
+title: "Module # 11: Debugging and Defensive Programming in R"
+author: "Robert Walsh"
+date: "2025-11-03"
+---
+
+Module 11 post for my LIS4370 blog. Welcome!
+
+Code repository:
+
+[![](mod11git.png)](mod11git.png)
+
+<https://github.com/rwalshUSF/RProgrammingFall2025WalshRobert/tree/main/assignments/assignment-11-%20Debugging>
+
+```{r}
+# Below is a function intended to flag rows of a numeric matrix x that are
+# outliers in every column according to the Tukey rule.
+# It contains a deliberate bug:
+
+tukey_multiple <- function(x) {
+  outliers <- array(TRUE, dim = dim(x))
+  for (j in 1:ncol(x)) {
+    outliers[, j] <- outliers[, j] && tukey.outlier(x[, j])
+  }
+  outlier.vec <- vector("logical", length = nrow(x))
+  for (i in 1:nrow(x)) {
+    outlier.vec[i] <- all(outliers[i, ])
+  }
+  return(outlier.vec)
+}
+```
+
+------------------------------------------------------------------------
+
+Task \# 1 - Reproduce the Error
+
+------------------------------------------------------------------------
+
+```{r}
+# In R, create a test matrix and run the function:
+set.seed(123)
+test_mat <- matrix(rnorm(50), nrow = 10)
+
+# Capture the exact error message you see.
+
+tryCatch({
+  # Code that might produce an error
+  tukey_multiple(test_mat)}, error = function(e) {
+
+    # Code to execute if an error occurs
+    message("An error occurred: ", e$message) # Print or capture the error message
+    return(NA) # Return a default value or handle the error as needed
+  })
+
+# Here is the error message:
+```
+
+------------------------------------------------------------------------
+
+Task \# 2 - Diagnose the Bug
+
+------------------------------------------------------------------------
+
+```{r}
+# traceback()
+# debug(tukey_multiple)
+# tukey_multiple(test_mat)
+
+# Here is the output from the debugging process:
+```
+
+[![](debug1.png)](debug1.png)
+
+```{r}
+# Reflect on why using && inside the loop causes the failure.
+# (Recall that && only returns a single TRUE/FALSE for the first element,
+# whereas you need element‑wise comparison.)
+
+# The problem occurs with how element wise logical operators and logical operators
+# apply to operations with vectors.
+
+# '&' is vectorized and '&&' is not.
+
+# The '&&' is primarily designed for comparing single logical values ex. scalars. 
+# When used with vectors like 'test_mat' or 'outliers' columns, it only considers 
+# the first element of each vector for comparison and issues an error if the 
+# vectors have more than one element. Whereas, the '&' operator performs a logical 
+# 'AND' operation on each corresponding element of two vectors, resulting in a 
+# new vector of logical values from evaluating both sides of the expression.
+
+# To fix this, we must change the '&&' in the code to '&' to analyze all elements 
+# of each column of a matrix and/or each vector passed to the function.
+```
+
+[![](reflection.png)](reflection.png)
+
+------------------------------------------------------------------------
+
+Task \# 3 - Fix the Code
+
+------------------------------------------------------------------------
+
+```{r}
+# Edit the function so that the logical operation is applied element‑wise.
+# Specifically, replace the buggy line with the correct operator.
+
+# Corrected inside the loop:
+
+# outliers[, j] <- outliers[, j] & tukey.outlier(x[, j])
+
+#tukey_multiple <- function(x) {
+#  outliers <- array(TRUE, dim = dim(x))
+#  for (j in 1:ncol(x)) {
+#    outliers[, j] <- outliers[, j] & tukey.outlier(x[, j])
+#  }
+#  outlier.vec <- vector("logical", length = nrow(x))
+#  for (i in 1:nrow(x)) {
+#    outlier.vec[i] <- all(outliers[i, ])
+#  }
+#  return(outlier.vec)
+#}
+```
+
+------------------------------------------------------------------------
+
+Task \# 4 - Validate Your Fix
+
+------------------------------------------------------------------------
+
+```{r}
+# Re‑run your corrected function on test_mat and verify it returns a
+# logical vector of length 10 without error:
+corrected_tukey <- function(x) {
+  outliers <- array(TRUE, dim = dim(x))
+  for (j in seq_len(ncol(x))) {
+    outliers[, j] <- outliers[, j] & tukey.outlier(x[, j])
+  }
+  outlier.vec <- logical(nrow(x))
+  for (i in seq_len(nrow(x))) {
+    outlier.vec[i] <- all(outliers[i, ])
+  }
+  outlier.vec
+}
+
+tryCatch({
+  # Code that might produce an error
+  corrected_tukey(test_mat)}, error = function(e) {
+
+    # Code to execute if an error occurs
+    message("An error occurred: ", e$message) # Print or capture the error message
+    return(NA) # Return a default value or handle the error as needed
+  })
+
+# Still producing error message - Diagnose the Bug
+# traceback()
+# debug(corrected_tukey)
+# corrected_tukey(test_mat)
+
+# Identify the faulty function & Fix the Code
+
+# Edit the function so that tukey.outlier() is removed.
+corrected_tukey_multiple <- function(x) {
+  # Create array
+  outliers <- array(TRUE, dim = dim(x))
+  for (j in seq_len(ncol(x))) {
+    # Compare every element of array to x
+    outliers[, j] <- outliers[, j] & x[, j]
+  }
+  # Create vector for 'outliers' results
+  outlier.vec <- logical(nrow(x))
+  for (i in seq_len(nrow(x))) {
+    # Store results in vector
+    outlier.vec[i] <- all(outliers[i, ])
+  }
+  # Return results
+  outlier.vec
+}
+
+# Re‑run corrected function on test_mat and verify it returns a
+# logical vector of length 10 without error:
+tryCatch({
+  # Code that might produce an error
+  corrected_tukey_multiple(test_mat)}, error = function(e) {
+
+    # Code to execute if an error occurs
+    message("An error occurred: ", e$message) # Print or capture the error message
+    return(NA) # Return a default value or handle the error as needed
+  })
+```
+
+[![](debug2.png)](debug2.png)
+
+------------------------------------------------------------------------
+
+Task \# 5 - Defensive Enhancements (Optional)
+
+------------------------------------------------------------------------
+
+```{r}
+# Add checks at the top of your function to:
+# Ensure x is a numeric matrix.
+# Provide informative errors.
+
+enhanced_tukey_multiple <- function(x) {
+
+  # Ensure 'x' is a matrix
+  if (!is.matrix(x)) {
+    stop("Input 'x' must be a matrix.")
+  }
+
+  # Ensure 'x' is numeric
+  if (!is.numeric(x)) {
+    # If the check fails, identify which columns are non-numeric
+    non_numeric_cols <- names(which(!apply(x, 2, is.numeric)))
+
+    if (length(non_numeric_cols) > 0) {
+      stop(paste0("All columns in 'x' must be numeric. Non-numeric columns found: ",
+                  paste(non_numeric_cols, collapse = ", ")))
+    } else {
+      # other non-numeric types
+      stop("Input 'x' must be a numeric matrix.")
+    }
+  }
+
+  # Create array
+  outliers <- array(TRUE, dim = dim(x))
+  for (j in seq_len(ncol(x))) {
+    # Compare every element of array to x
+    outliers[, j] <- outliers[, j] & x[, j]
+  }
+  # Create vector for 'outliers' results
+  outlier.vec <- logical(nrow(x))
+  for (i in seq_len(nrow(x))) {
+    # Store results in vector
+    outlier.vec[i] <- all(outliers[i, ])
+  }
+  # Return results
+  outlier.vec
+}
+
+# Re‑run enhanced function on test_mat and verify it returns a
+# logical vector of length 10 without error:
+tryCatch({
+  # Code that might produce an error
+  enhanced_tukey_multiple(test_mat)}, error = function(e) {
+
+    # Code to execute if an error occurs
+    message("An error occurred: ", e$message) # Print or capture the error message
+    return(NA) # Return a default value or handle the error as needed
+  })
+
+# matrix test
+tryCatch({
+  # Code that might produce an error
+  enhanced_tukey_multiple(1)}, error = function(e) {
+
+    # Code to execute if an error occurs
+    message("An error occurred: ", e$message) # Print or capture the error message
+    return(NA) # Return a default value or handle the error as needed
+  })
+
+# numeric test
+tryCatch({
+  # Code that might produce an error
+  enhanced_tukey_multiple("test one for numeric")}, error = function(e) {
+
+    # Code to execute if an error occurs
+    message("An error occurred: ", e$message) # Print or capture the error message
+    return(NA) # Return a default value or handle the error as needed
+  })
+```

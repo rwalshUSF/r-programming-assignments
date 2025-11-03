@@ -1,0 +1,141 @@
+---
+title: "Module # 10: Assignment: Building Your Own R Package"
+author: "Robert Walsh"
+date: "2025-10-27"
+---
+
+This is my Module #10 post for my LIS4370 blog. Welcome!
+
+------------------------------------------------------------------------
+
+Task \# 1 - Initialize Your Package Skeleton
+
+------------------------------------------------------------------------
+
+```{r}
+# In R, run:
+library(devtools)
+#create("Friedman")
+#This creates a folder Friedman/ with subfolders (R/, man/, etc.) and a default DESCRIPTION.
+```
+
+------------------------------------------------------------------------
+
+Task \# 2 - Edit the DESCRIPTION File
+
+------------------------------------------------------------------------
+
+```{r}
+#Open Friedman/DESCRIPTION and update the fields:
+#Package: your package name (keep Friedman or rename).
+#Title: concise one‑line summary.
+#Version: start with 0.0.0.9000.
+#Authors@R: list yourself and any collaborators.
+#Description: one paragraph describing functionality.
+#Depends: specify R (>= 3.1.2) only.
+#Imports: list packages you will use (e.g., ggplot2, dplyr).
+#License: choose (e.g., CC0).
+#LazyData: set to true if you include data sets.
+#Optionally add:
+
+#URL: link to GitHub repo or website.
+#BugReports: GitHub issues URL.
+#Suggests: packages for testing and examples.
+```
+
+Here are the fields I chose for the DESCRIPTION file: (I chose a simple title that describes the package, included myself as the author, a short paragraph of what the packages does and the MIT license for student project simplicity. URL for git and bug reports included)
+
+Package: Friedman
+
+Title: Simple Finance Calculation Package
+
+Version: 0.0.0.9000
+
+Authors\@R: person("Robert", "Walsh", , "robert.walsh\@usf.edu", role = c("aut", "cre"))
+
+Description: The Friedman R package provides a straightforward suite of functions for performing common financial calculations, making it an excellent educational tool or quick-reference utility. It includes core functions for analyzing the time value of money, such as computing future and present values, as well as calculating net present value and loan payments.
+
+License: MIT + file LICENSE
+
+Encoding: UTF-8
+
+Roxygen: list(markdown = TRUE)
+
+RoxygenNote: 7.3.3
+
+URL: https://github.com/rwalshUSF/Friedman
+
+BugReports: https://github.com/rwalshUSF/Friedman/issues
+
+[![](desc.png)](desc.png)
+
+------------------------------------------------------------------------
+
+Task \# 3 - Verify and Build
+
+------------------------------------------------------------------------
+
+```{r}
+#From your package root, run:
+#check("Friedman")
+#build("Friedman")
+
+# Fix any DESCRIPTION or dependency warnings
+```
+
+[![](check.png)](check.png)
+
+------------------------------------------------------------------------
+
+Task \# 4 - Publish to GitHub
+
+------------------------------------------------------------------------
+
+```{r}
+#Initialize a Git repo in Friedman/, commit all files.
+#Create a new GitHub repository named Friedman and push your local repo.
+#use_github()
+#Ensure DESCRIPTION and minimal files (R/, NAMESPACE) are present in GitHub.
+```
+
+Code repository:
+
+[![](mod10git.png)](mod10git.png)
+
+<https://github.com/rwalshUSF/Friedman/tree/main/assignments/module_10_assignment>
+
+------------------------------------------------------------------------
+
+Task \# 5 - Write Your Package Proposal
+
+------------------------------------------------------------------------
+
+I am proposing a simple finance calculation package in R that can focus on core financial concepts and build clear, well-documented functions to perform the calculations. This is an excellent project for this class project class because it's practical, involves mathematical R code formulas, and teaches fundamental R package development skills.
+
+The Friedman R package provides a straightforward suite of functions for performing common financial calculations, making it an excellent educational tool or quick-reference utility. It includes core functions for analyzing the time value of money, such as computing future and present values, as well as calculating net present value and loan payments. The package also features a function for generating a full amortization schedule, allowing users to easily break down loan payments into principal and interest over time. By encapsulating complex financial formulas into easy-to-use functions, Friedman helps users perform essential financial analyses without the need for manual calculations, streamlining tasks for students, analysts, or anyone interested in personal finance.
+
+------------------------------------------------------------------------
+
+Function ideas:
+
+1 - Time value of money (TVM) TVM is a financial concept that's perfect for a simple package.
+
+Future Value (FV): Calculates the future value of an investment with a lump-sum payment. fv_simple(principal, rate, years) fv_compound(principal, rate, years, n_comp) (where n_comp is the number of times compounded per year)
+
+Present Value (PV): Calculates the current worth of a future sum of money. pv(future_value, rate, years)
+
+Net Present Value (NPV): Calculates the present value of a series of future cash flows. npv(rate, cash_flows)
+
+Annuity Payments: Calculates the payment amount for a loan or investment with regular, equal payments. annuity_payment(principal, rate, years)
+
+2 - Loan and mortgage calculations This is a practical addition to the package.
+
+Monthly Payment: Calculates the fixed monthly payment for a loan. loan_payment(principal, rate, years)
+
+Amortization Schedule: Creates a data frame showing the breakdown of each payment into principal and interest over the life of a loan. amort_schedule(principal, rate, years)
+
+3 - Return and growth calculations For analyzing simple investment performance.
+
+Compound Annual Growth Rate (CAGR): Calculates the average annual growth rate of an investment over a specific period. cagr(start_value, end_value, years)
+
+Simple Return: Calculates the percentage change in an investment's value. simple_return(start_price, end_price)
