@@ -16,7 +16,15 @@ The 'SimpleFinCalc' R Package can be accessed from this code repository:
 
 # Task: Develop an R package, publish it on GitHub, and share the repository link on Canvas
 
-My fascination with finance is reflected in my coursework, inspiring me to apply my knowledge practically in my final project: developing the SimpleFinCalc R package. The package, available on [GitHub](https://github.com/rwalshUSF/SimpleFinCalc) includes essential functions for financial calculations, such as determining present and future values, analyzing cash flows, and calculating loan amortizations. My goal was to create an intuitive, accessible tool that helps others easily grasp and apply these core financial principles. The process of translating complex financial theories into functional code further solidified my enthusiasm for the subject and honed my programming skills.
+My fascination with finance is reflected in my coursework, inspiring me to apply my knowledge practically in my final project: developing the SimpleFinCalc R package. The package, available on [GitHub](https://github.com/rwalshUSF/SimpleFinCalc) includes essential functions for financial calculations, such as determining present and future values, analyzing cash flows, and calculating loan amortizations.
+
+My goal was to create an intuitive, accessible tool that helps others easily grasp and apply these core financial principles. The process of translating complex financial theories into functional code further solidified my enthusiasm for the subject and honed my programming skills.
+
+The process of creating an R package provided significant learning opportunities, particularly in understanding package structure and documentation. Key new skills I have sharpened include the effective use of Roxygen for generating documentation, which assists the creation of the help files and ensured consistent function descriptions. Setting up the DESCRIPTION file involved learning about package metadata, dependencies, and licensing, which are important for package information and attribution. The programming experience highlighted the importance of a well-organized file structure within the package directory for maintainability, installation, and collaboration.
+
+I did encounter some technical challenges during development which mainly revolved around dependency management and ensuring cross-platform compatibility. Resolving these issues often required meticulous debugging and exploring alternative approaches to function implementation. For instance, addressing specific errors related to external package interactions necessitated careful examination of package vignettes and community forums for solutions. 
+
+Looking ahead, the current package limitations include a lack of comprehensive unit testing and limited support for certain data types. Future enhancements will focus on implementing a robust testing framework to ensure code stability and expand functionality to handle a broader range of input data, potentially incorporating features like advanced visualization options or integration with other analytical tools.
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -25,56 +33,82 @@ knitr::opts_chunk$set(
 )
 ```
 
+## The 'SimpleFinCalc' R Package
+
 ```{r setup}
 library(SimpleFinCalc)
 ```
 
-The 'SimpleFinCalc' R package provides a straightforward suite of functions for performing common financial calculations, making it an excellent educational tool or quick-reference utility. It includes core functions for analyzing the time value of money, such as computing future and present values, as well as calculating loan payments. The package also features a function for generating a full amortization schedule, allowing users to easily break down loan payments into principal and interest over time. By encapsulating complex financial formulas into easy-to-use functions, SimpleFinCalc helps users perform essential financial analyses without the need for manual calculations, streamlining tasks for students, analysts, or anyone interested in personal finance.
+The goal of the 'SimpleFinCalc' R package is to provide a straightforward suite of functions for performing common financial calculations, making it an excellent educational tool or quick-reference utility. It includes core functions for analyzing the time value of money, such as computing future and present values, as well as calculating loan payments. The package also features a function for generating a full amortization schedule, allowing users to easily break down loan payments into principal and interest over time. By encapsulating complex financial formulas into easy-to-use functions, SimpleFinCalc helps users perform essential financial analyses without the need for manual calculations, streamlining tasks for students, analysts, or anyone interested in personal finance.
 
-The 'SimpleFinCalc' R package includes a built in data set 'profiles1' to assist in the testing and demonstration of the many functions that the packages includes. The data set is available when the package is installed and the library is loaded in to the R working environment. The data set can alo be referenced with the data() function.
+## Installation
 
-# Installation
-
-You can install the development version of 'SimpleFinCalc' from [GitHub](https://github.com/rwalshUSF/SimpleFinCalc) with:
+You can install the development version of SimpleFinCalc from [GitHub](https://github.com/rwalshUSF/SimpleFinCalc) with:
 
 ``` r
-# install.packages("pak")
-pak::pak("rwalshUSF/SimpleFinCalc")
+# install_github("rwalshUSF/SimpleFinCalc",build_vignettes = TRUE)
 ```
 
-```{r}
-# Load Library
+Once the installation is complete, try these Rstudio help commands to access documentation:
+
+``` r
+# Ensure the package is loaded
 # library(SimpleFinCalc)
+
+# To access the Documentation for the package
+# help(package = "SimpleFinCalc")
+
+# To view the package Vignette
+# vignette("SimpleFinCalc", package = "SimpleFinCalc")
+
+# To view the help file for the 'profiles1' data set
+# ?profiles1
+
+# To view the help files for the individual functions
+# ?fv_simple
+# ?fv_compound
+# ?pv
+# ?annuity_payment
+# ?loan_payment
+# ?amort_schedule
+# ?cagr
+# ?simple_return
 ```
 
-```{r}
-# Inspect Data Set 'profiles1'
-# data("profiles1")
-head(profiles1)
+## Data
+The 'SimpleFinCalc' R package includes a built in data set 'profiles1' to assist in the testing and demonstration of the many functions that the packages includes. The 'profiles1' data set consists of 100 records for financial calculations including synthetic inputs for various loan, investment, and return calculations for use with the functions implemented in the 'SimpleFinCalc' package.
+
+The data set is available when the package is installed and the library is loaded in to the R working environment. The data set can also be referenced with the data() function or ?profiles1 in the R Console.
+
+This is how to access the help file for the built-in 'profiles1' data set:
+
+```{r profiles1_help}
+# library(SimpleFinCalc)
+# ?profiles1
 ```
 
 Here is a summary of the variables in the built-in 'profiles1' data set:
 
-```{r profiles1}
+```{r profiles1_summary}
+library(SimpleFinCalc)
 summary(profiles1)
 ```
 
-# Examples of the package's functions with user input and 'profiles1' data
+# --- 1. Time Value of Money (TVM) Functions ---
 
-## --- 1. Time Value of Money (TVM) Functions ---
+## fv_simple()
 
-### Calculate the Future Value (FV) of a lump-sum investment (simple interest).
+### Calculate the Future Value (FV) of a lump-sum investment (simple interest)
+
+The fv_simple() function performs a 'Simple Future Value' calculation with robust input 
+validation. It takes three variables; Principal, Rate, and Years, and returns 
+the calculated value.
 
 Simple Future Value - $FV = PV * (1 + r)^n$
 
 ```{r}
-# The 'fv_simple()' function:
-#
-# This function performs a 'Simple Future Value' calculation with robust input 
-# validation. It takes three variables; Principal, Rate, and Years, and returns 
-# the calculated value.
-
-# Using user variables:
+library(SimpleFinCalc)
+# With user provided variables:
 testP<-1000
 testR<-5
 testY<-10
@@ -93,18 +127,17 @@ fv_simple(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[1])
 # for 25 Years they would have ~$10861782.00 in the future!
 ```
 
+## fv_compound()
+
 ### Calculate the Future Value (FV) of a lump-sum investment (compound interest).
+The fv_compound() function performs a 'Compound Future Value' calculation with robust input 
+validation. It takes four variables; Principal, Rate, Years, and N_Compounds; 
+then returns the calculated value.
 
 Compound Future Value - $FV = P * (1 + r/n)^(n*t)$
 
 ```{r}
-# The 'fv_compound()' function:
-#
-# This function performs a 'Compound Future Value' calculation with robust input 
-# validation. It takes four variables; Principal, Rate, Years, and N_Compounds; 
-# then returns the calculated value.
-
-# Using user variables:
+# With user provided variables:
 testP<-1000
 testR<-5
 testY<-10
@@ -124,18 +157,17 @@ fv_compound(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[1],profiles
 # 25 Years, that compounds once a year; they would have ~$10861782.00 in the future!
 ```
 
+## pv()
+
 ### Calculate the Present Value (PV) of a future sum of money.
+The pv() function performs a 'Present Value' calculation with robust input validation.
+It takes three variables; Future_Value_Input, Rate, and Years; 
+then returns the calculated value.
 
 Present Value - $PV = FV / (1 + r)^n$
 
 ```{r}
-# The 'pv()' function:
-#
-# This function performs a 'Present Value' calculation with robust input validation.
-# It takes three variables; Future_Value_Input, Rate, and Years; 
-# then returns the calculated value.
-
-# Using user variables:
+# With user provided variables:
 testF<-10000
 testR<-5
 testY<-10
@@ -156,18 +188,17 @@ pv(profiles1$Future_Value_Input[1],profiles1$Rate[1],profiles1$Years[1])
 # ~$43763.29 in the present!
 ```
 
+## annuity_payment()
+
 ### Calculate the fixed annuity payment amount for a loan or investment.
+The annuity_payment() function performs an 'annuity_payment' calculation with robust input validation.
+It takes three variables; Principal, Rate, and Years; 
+then returns the calculated value. The regular annual payment amount.
 
 Fixed Annuity Payment - $payment = P * (r*(1 + r)^n)/((1 + r)^n-1)$
 
 ```{r}
-# The 'annuity_payment()' function:
-#
-# This function performs an 'annuity_payment' calculation with robust input validation.
-# It takes three variables; Principal, Rate, and Years; 
-# then returns the calculated value. The regular annual payment amount.
-
-# Using user variables:
+# With user provided variables:
 testP<-1000
 testR<-5
 testY<-10
@@ -187,20 +218,19 @@ annuity_payment(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[1])
 # ~$64507.79!
 ```
 
-## --- 2. Loan and Mortgage Calculation ---
+# --- 2. Loan and Mortgage Calculation ---
+
+## loan_payment()
 
 ### Calculate the fixed monthly payment for a loan.
+The loan_payment() function performs a 'loan_payment' calculation with robust input validation.
+It takes three variables; Principal, Rate, and Years; 
+then returns the calculated value. The fixed monthly payment.
 
 Monthly Loan Payment - $payment = P*(r*(1 + r)^n/((1+r)^n-1)$
 
 ```{r}
-# The 'loan_payment()' function:
-#
-# This function performs a 'loan_payment' calculation with robust input validation.
-# It takes three variables; Principal, Rate, and Years; 
-# then returns the calculated value. The fixed monthly payment.
-
-# Using user variables:
+# With user provided variables:
 testP<-1000
 testR<-5
 testY<-10
@@ -219,7 +249,12 @@ loan_payment(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[1])
 # for 25 Years; their fixed monthly loan payment is ~$5334.956!
 ```
 
+## amort_schedule()
+
 ### Create an amortization schedule data frame for a loan.
+The 'amort_schedule()' function performs 'amort_schedule' calculations with robust input validation.
+It takes three variables; Principal, Rate, and Years; 
+then returns A data frame showing the breakdown of each payment.
 
 The 'amort_schedule' function relies on two core formulas and a sequential process:
 
@@ -238,13 +273,7 @@ Principal Paid: $Principal Paid = Payment - Interest$
 Ending Balance: $Ending Balance = Beginning Balance - Principal Paid$
 
 ```{r}
-# The 'amort_schedule()' function:
-#
-# This function performs 'amort_schedule' calculations with robust input validation.
-# It takes three variables; Principal, Rate, and Years; 
-# then returns A data frame showing the breakdown of each payment.
-
-# Using user variables:
+# With user provided variables:
 testP<-1000
 testR<-5
 testY<-10
@@ -263,21 +292,20 @@ sched2<-amort_schedule(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[
 head(sched2)
 ```
 
-## --- 3. Return and Growth Calculations ---
+# --- 3. Return and Growth Calculations ---
+
+## cagr()
 
 ### Calculate the Compound Annual Growth Rate (CAGR) of an investment.
+The cagr() function performs a 'cagr' calculation with robust input validation.
+It takes three variables; Start_Value, End_Value, and Years; 
+then returns the calculated value. The Compound Annual Growth Rate (CAGR) 
+of an investment as a decimal.
 
 $CAGR = ((endvalue / startvalue)^(1 / years)) - 1$
 
 ```{r}
-# The 'cagr()' function:
-#
-# This function performs a 'cagr' calculation with robust input validation.
-# It takes three variables; Start_Value, End_Value, and Years; 
-# then returns the calculated value. The Compound Annual Growth Rate (CAGR) 
-# of an investment as a decimal.
-
-# Using user variables:
+# With user provided variables:
 testSV<-1000
 testEV<-15632
 testY<-10
@@ -296,18 +324,17 @@ cagr(profiles1$Start_Value[1],profiles1$End_Value[1],profiles1$Years[1])
 # worth $1039037 after 25 Years; their CAGR is ~0.0333562!
 ```
 
+## simple_return()
+
 ### Calculate the Simple Return (percentage change) of an investment.
+The simple_return() function performs a 'simple_return' calculation with robust input validation.
+It takes two variables; Start_Price and End_Price; 
+then returns the calculated value. The simple return as a decimal (e.g., 0.10 for 10%).
 
 $Simple Return = (endprice - startprice) / startprice$
 
 ```{r}
-# The 'simple_return()' function:
-#
-# This function performs a 'simple_return' calculation with robust input validation.
-# It takes two variables; Start_Price and End_Price; 
-# then returns the calculated value. The simple return as a decimal (e.g., 0.10 for 10%).
-
-# Using user variables:
+# With user provided variables:
 testSP<-1000
 testEP<-15632
 simple_return(testSP,testEP)

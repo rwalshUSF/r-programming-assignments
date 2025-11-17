@@ -211,255 +211,262 @@ window.Quarto = {
 <hr>
 <section id="task-develop-an-r-package-publish-it-on-github-and-share-the-repository-link-on-canvas" class="level1">
 <h1>Task: Develop an R package, publish it on GitHub, and share the repository link on Canvas</h1>
-<p>My fascination with finance is reflected in my coursework, inspiring me to apply my knowledge practically in my final project: developing the SimpleFinCalc R package. The package, available on <a href="https://github.com/rwalshUSF/SimpleFinCalc">GitHub</a> includes essential functions for financial calculations, such as determining present and future values, analyzing cash flows, and calculating loan amortizations. My goal was to create an intuitive, accessible tool that helps others easily grasp and apply these core financial principles. The process of translating complex financial theories into functional code further solidified my enthusiasm for the subject and honed my programming skills.</p>
+<p>My fascination with finance is reflected in my coursework, inspiring me to apply my knowledge practically in my final project: developing the SimpleFinCalc R package. The package, available on <a href="https://github.com/rwalshUSF/SimpleFinCalc">GitHub</a> includes essential functions for financial calculations, such as determining present and future values, analyzing cash flows, and calculating loan amortizations.</p>
+<p>My goal was to create an intuitive, accessible tool that helps others easily grasp and apply these core financial principles. The process of translating complex financial theories into functional code further solidified my enthusiasm for the subject and honed my programming skills.</p>
+<p>The process of creating an R package provided significant learning opportunities, particularly in understanding package structure and documentation. Key new skills I have sharpened include the effective use of Roxygen for generating documentation, which assists the creation of the help files and ensured consistent function descriptions. Setting up the DESCRIPTION file involved learning about package metadata, dependencies, and licensing, which are important for package information and attribution. The programming experience highlighted the importance of a well-organized file structure within the package directory for maintainability, installation, and collaboration.</p>
+<p>I did encounter some technical challenges during development which mainly revolved around dependency management and ensuring cross-platform compatibility. Resolving these issues often required meticulous debugging and exploring alternative approaches to function implementation. For instance, addressing specific errors related to external package interactions necessitated careful examination of package vignettes and community forums for solutions.</p>
+<p>Looking ahead, the current package limitations include a lack of comprehensive unit testing and limited support for certain data types. Future enhancements will focus on implementing a robust testing framework to ensure code stability and expand functionality to handle a broader range of input data, potentially incorporating features like advanced visualization options or integration with other analytical tools.</p>
+<section id="the-simplefincalc-r-package" class="level2">
+<h2 class="anchored" data-anchor-id="the-simplefincalc-r-package">The ‘SimpleFinCalc’ R Package</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SimpleFinCalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The ‘SimpleFinCalc’ R package provides a straightforward suite of functions for performing common financial calculations, making it an excellent educational tool or quick-reference utility. It includes core functions for analyzing the time value of money, such as computing future and present values, as well as calculating loan payments. The package also features a function for generating a full amortization schedule, allowing users to easily break down loan payments into principal and interest over time. By encapsulating complex financial formulas into easy-to-use functions, SimpleFinCalc helps users perform essential financial analyses without the need for manual calculations, streamlining tasks for students, analysts, or anyone interested in personal finance.</p>
-<p>The ‘SimpleFinCalc’ R package includes a built in data set ‘profiles1’ to assist in the testing and demonstration of the many functions that the packages includes. The data set is available when the package is installed and the library is loaded in to the R working environment. The data set can alo be referenced with the data() function.</p>
+<p>The goal of the ‘SimpleFinCalc’ R package is to provide a straightforward suite of functions for performing common financial calculations, making it an excellent educational tool or quick-reference utility. It includes core functions for analyzing the time value of money, such as computing future and present values, as well as calculating loan payments. The package also features a function for generating a full amortization schedule, allowing users to easily break down loan payments into principal and interest over time. By encapsulating complex financial formulas into easy-to-use functions, SimpleFinCalc helps users perform essential financial analyses without the need for manual calculations, streamlining tasks for students, analysts, or anyone interested in personal finance.</p>
 </section>
-<section id="installation" class="level1">
-<h1>Installation</h1>
-<p>You can install the development version of ‘SimpleFinCalc’ from <a href="https://github.com/rwalshUSF/SimpleFinCalc">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pak")</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"rwalshUSF/SimpleFinCalc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>You can install the development version of SimpleFinCalc from <a href="https://github.com/rwalshUSF/SimpleFinCalc">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install_github("rwalshUSF/SimpleFinCalc",build_vignettes = TRUE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once the installation is complete, try these Rstudio help commands to access documentation:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure the package is loaded</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(SimpleFinCalc)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To access the Documentation for the package</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># help(package = "SimpleFinCalc")</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># To view the package Vignette</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># vignette("SimpleFinCalc", package = "SimpleFinCalc")</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To view the help file for the 'profiles1' data set</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ?profiles1</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># To view the help files for the individual functions</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ?fv_simple</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ?fv_compound</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ?pv</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ?annuity_payment</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ?loan_payment</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># ?amort_schedule</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ?cagr</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># ?simple_return</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>The ‘SimpleFinCalc’ R package includes a built in data set ‘profiles1’ to assist in the testing and demonstration of the many functions that the packages includes. The ‘profiles1’ data set consists of 100 records for financial calculations including synthetic inputs for various loan, investment, and return calculations for use with the functions implemented in the ‘SimpleFinCalc’ package.</p>
+<p>The data set is available when the package is installed and the library is loaded in to the R working environment. The data set can also be referenced with the data() function or ?profiles1 in the R Console.</p>
+<p>This is how to access the help file for the built-in ‘profiles1’ data set:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Library</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(SimpleFinCalc)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect Data Set 'profiles1'</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data("profiles1")</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(profiles1)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal       Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.13506530    25             1          1039037.4    457488.2</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  468600.6 0.08722444    16             4           690463.1    468600.6</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  143783.6 0.13075103    22             1           211693.5    143783.6</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  415393.4 0.07756351    24            12           751215.1    415393.4</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  321231.0 0.04052441     1             4           927647.3    321231.0</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  260028.9 0.07750220    29             1           761126.8    260028.9</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1039037.4    457488.2 1039037.4</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  690463.1    468600.6  690463.1</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  211693.5    143783.6  211693.5</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  751215.1    415393.4  751215.1</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  927647.3    321231.0  927647.3</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  761126.8    260028.9  761126.8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(SimpleFinCalc)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ?profiles1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here is a summary of the variables in the built-in ‘profiles1’ data set:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(profiles1)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Principal           Rate             Years       N_Compounding  </span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :  1119   Min.   :0.02228   Min.   : 1.00   Min.   : 1.00  </span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:130577   1st Qu.:0.04429   1st Qu.:10.00   1st Qu.: 1.00  </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median :270317   Median :0.07364   Median :18.00   Median : 4.00  </span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   :262715   Mean   :0.07730   Mean   :16.59   Mean   : 5.36  </span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:382043   3rd Qu.:0.09891   3rd Qu.:23.25   3rd Qu.:12.00  </span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :494457   Max.   :0.14955   Max.   :30.00   Max.   :12.00  </span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Future_Value_Input  Start_Value       End_Value        Start_Price    </span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :   2886    Min.   :  1119   Min.   :   2886   Min.   :  1119  </span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.: 239745    1st Qu.:130577   1st Qu.: 239745   1st Qu.:130577  </span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median : 494020    Median :270317   Median : 494020   Median :270317  </span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   : 539392    Mean   :262715   Mean   : 539392   Mean   :262715  </span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.: 831580    3rd Qu.:382043   3rd Qu.: 831580   3rd Qu.:382043  </span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :1325829    Max.   :494457   Max.   :1325829   Max.   :494457  </span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    End_Price      </span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :   2886  </span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.: 239745  </span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median : 494020  </span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   : 539392  </span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.: 831580  </span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :1325829</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SimpleFinCalc)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(profiles1)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Principal           Rate             Years       N_Compounding  </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :  1119   Min.   :0.02228   Min.   : 1.00   Min.   : 1.00  </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:130577   1st Qu.:0.04429   1st Qu.:10.00   1st Qu.: 1.00  </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median :270317   Median :0.07364   Median :18.00   Median : 4.00  </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   :262715   Mean   :0.07730   Mean   :16.59   Mean   : 5.36  </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:382043   3rd Qu.:0.09891   3rd Qu.:23.25   3rd Qu.:12.00  </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :494457   Max.   :0.14955   Max.   :30.00   Max.   :12.00  </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Future_Value_Input  Start_Value       End_Value        Start_Price    </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :   2886    Min.   :  1119   Min.   :   2886   Min.   :  1119  </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.: 239745    1st Qu.:130577   1st Qu.: 239745   1st Qu.:130577  </span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median : 494020    Median :270317   Median : 494020   Median :270317  </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   : 539392    Mean   :262715   Mean   : 539392   Mean   :262715  </span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.: 831580    3rd Qu.:382043   3rd Qu.: 831580   3rd Qu.:382043  </span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :1325829    Max.   :494457   Max.   :1325829   Max.   :494457  </span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    End_Price      </span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Min.   :   2886  </span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1st Qu.: 239745  </span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Median : 494020  </span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mean   : 539392  </span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.: 831580  </span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Max.   :1325829</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="examples-of-the-packages-functions-with-user-input-and-profiles1-data" class="level1">
-<h1>Examples of the package’s functions with user input and ‘profiles1’ data</h1>
-<section id="time-value-of-money-tvm-functions" class="level2">
-<h2 class="anchored" data-anchor-id="time-value-of-money-tvm-functions">— 1. Time Value of Money (TVM) Functions —</h2>
-<section id="calculate-the-future-value-fv-of-a-lump-sum-investment-simple-interest." class="level3">
-<h3 class="anchored" data-anchor-id="calculate-the-future-value-fv-of-a-lump-sum-investment-simple-interest.">Calculate the Future Value (FV) of a lump-sum investment (simple interest).</h3>
+</section>
+<section id="time-value-of-money-tvm-functions" class="level1">
+<h1>— 1. Time Value of Money (TVM) Functions —</h1>
+<section id="fv_simple" class="level2">
+<h2 class="anchored" data-anchor-id="fv_simple">fv_simple()</h2>
+<section id="calculate-the-future-value-fv-of-a-lump-sum-investment-simple-interest" class="level3">
+<h3 class="anchored" data-anchor-id="calculate-the-future-value-fv-of-a-lump-sum-investment-simple-interest">Calculate the Future Value (FV) of a lump-sum investment (simple interest)</h3>
+<p>The fv_simple() function performs a ‘Simple Future Value’ calculation with robust input validation. It takes three variables; Principal, Rate, and Years, and returns the calculated value.</p>
 <p>Simple Future Value - <span class="math inline">\(FV = PV * (1 + r)^n\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'fv_simple()' function:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function performs a 'Simple Future Value' calculation with robust input </span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># validation. It takes three variables; Principal, Rate, and Years, and returns </span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># the calculated value.</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using user variables:</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_simple</span>(testP,testR,testY)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1628.895</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person had a Principal of $1000, at a Rate of .05% for 10 Years </span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># they would have ~$1628.895 in the future!</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_simple</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10861782</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person had a Principal of $457488.2, at a Rate of 0.13506535% </span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># for 25 Years they would have ~$10861782.00 in the future!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SimpleFinCalc)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># With user provided variables:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_simple</span>(testP,testR,testY)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1628.895</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person had a Principal of $1000, at a Rate of .05% for 10 Years </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># they would have ~$1628.895 in the future!</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_simple</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10861782</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person had a Principal of $457488.2, at a Rate of 0.13506535% </span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># for 25 Years they would have ~$10861782.00 in the future!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
+<section id="fv_compound" class="level2">
+<h2 class="anchored" data-anchor-id="fv_compound">fv_compound()</h2>
 <section id="calculate-the-future-value-fv-of-a-lump-sum-investment-compound-interest." class="level3">
 <h3 class="anchored" data-anchor-id="calculate-the-future-value-fv-of-a-lump-sum-investment-compound-interest.">Calculate the Future Value (FV) of a lump-sum investment (compound interest).</h3>
+<p>The fv_compound() function performs a ‘Compound Future Value’ calculation with robust input validation. It takes four variables; Principal, Rate, Years, and N_Compounds; then returns the calculated value.</p>
 <p>Compound Future Value - <span class="math inline">\(FV = P * (1 + r/n)^(n*t)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'fv_compound()' function:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function performs a 'Compound Future Value' calculation with robust input </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># validation. It takes four variables; Principal, Rate, Years, and N_Compounds; </span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then returns the calculated value.</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using user variables:</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>testN<span class="ot">&lt;-</span><span class="dv">4</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_compound</span>(testP,testR,testY,testN)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1643.619</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person had a Principal of $1000, at a Rate of .05% for 10 Years, </span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># that compounds 4 times a year; they would have ~$1643.619 in the future!</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_compound</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>],profiles1<span class="sc">$</span>N_Compounding[<span class="dv">1</span>])</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10861782</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person had a Principal of $457488.2, at a Rate of 0.1350653% for </span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 25 Years, that compounds once a year; they would have ~$10861782.00 in the future!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With user provided variables:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>testN<span class="ot">&lt;-</span><span class="dv">4</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_compound</span>(testP,testR,testY,testN)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1643.619</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person had a Principal of $1000, at a Rate of .05% for 10 Years, </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># that compounds 4 times a year; they would have ~$1643.619 in the future!</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_compound</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>],profiles1<span class="sc">$</span>N_Compounding[<span class="dv">1</span>])</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10861782</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person had a Principal of $457488.2, at a Rate of 0.1350653% for </span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 25 Years, that compounds once a year; they would have ~$10861782.00 in the future!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
+<section id="pv" class="level2">
+<h2 class="anchored" data-anchor-id="pv">pv()</h2>
 <section id="calculate-the-present-value-pv-of-a-future-sum-of-money." class="level3">
 <h3 class="anchored" data-anchor-id="calculate-the-present-value-pv-of-a-future-sum-of-money.">Calculate the Present Value (PV) of a future sum of money.</h3>
+<p>The pv() function performs a ‘Present Value’ calculation with robust input validation. It takes three variables; Future_Value_Input, Rate, and Years; then returns the calculated value.</p>
 <p>Present Value - <span class="math inline">\(PV = FV / (1 + r)^n\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'pv()' function:</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function performs a 'Present Value' calculation with robust input validation.</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It takes three variables; Future_Value_Input, Rate, and Years; </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then returns the calculated value.</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using user variables:</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>testF<span class="ot">&lt;-</span><span class="dv">10000</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">pv</span>(testF,testR,testY)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6139.133</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person will have $10000 in the future, at an annual discount </span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Rate of .05%, receiving the money 10 Years from now; their money is worth </span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ~$6139.133 in the present!</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="fu">pv</span>(profiles1<span class="sc">$</span>Future_Value_Input[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 43763.29</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person will have $1039037 in the future, at an annual discount </span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Rate of 0.1350653%, receiving the money 25 Years from now; their money is worth </span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># ~$43763.29 in the present!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With user provided variables:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>testF<span class="ot">&lt;-</span><span class="dv">10000</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pv</span>(testF,testR,testY)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6139.133</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person will have $10000 in the future, at an annual discount </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Rate of .05%, receiving the money 10 Years from now; their money is worth </span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ~$6139.133 in the present!</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">pv</span>(profiles1<span class="sc">$</span>Future_Value_Input[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 43763.29</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person will have $1039037 in the future, at an annual discount </span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Rate of 0.1350653%, receiving the money 25 Years from now; their money is worth </span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># ~$43763.29 in the present!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
+<section id="annuity_payment" class="level2">
+<h2 class="anchored" data-anchor-id="annuity_payment">annuity_payment()</h2>
 <section id="calculate-the-fixed-annuity-payment-amount-for-a-loan-or-investment." class="level3">
 <h3 class="anchored" data-anchor-id="calculate-the-fixed-annuity-payment-amount-for-a-loan-or-investment.">Calculate the fixed annuity payment amount for a loan or investment.</h3>
+<p>The annuity_payment() function performs an ‘annuity_payment’ calculation with robust input validation. It takes three variables; Principal, Rate, and Years; then returns the calculated value. The regular annual payment amount.</p>
 <p>Fixed Annuity Payment - <span class="math inline">\(payment = P * (r*(1 + r)^n)/((1 + r)^n-1)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'annuity_payment()' function:</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function performs an 'annuity_payment' calculation with robust input validation.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It takes three variables; Principal, Rate, and Years; </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then returns the calculated value. The regular annual payment amount.</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using user variables:</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">annuity_payment</span>(testP,testR,testY)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 129.5046</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person has $1000 in an annuity, at an annual Rate of .05%, </span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># receiving payments for 10 Years; their regular payment is ~$129.5046!</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="fu">annuity_payment</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64507.79</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person has $457488.2 in an annuity, at an annual Rate of </span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.1350653%, receiving payments for 25 Years; their regular payment is </span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co"># ~$64507.79!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With user provided variables:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">annuity_payment</span>(testP,testR,testY)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 129.5046</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person has $1000 in an annuity, at an annual Rate of .05%, </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># receiving payments for 10 Years; their regular payment is ~$129.5046!</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">annuity_payment</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64507.79</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person has $457488.2 in an annuity, at an annual Rate of </span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.1350653%, receiving payments for 25 Years; their regular payment is </span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ~$64507.79!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="loan-and-mortgage-calculation" class="level2">
-<h2 class="anchored" data-anchor-id="loan-and-mortgage-calculation">— 2. Loan and Mortgage Calculation —</h2>
+</section>
+<section id="loan-and-mortgage-calculation" class="level1">
+<h1>— 2. Loan and Mortgage Calculation —</h1>
+<section id="loan_payment" class="level2">
+<h2 class="anchored" data-anchor-id="loan_payment">loan_payment()</h2>
 <section id="calculate-the-fixed-monthly-payment-for-a-loan." class="level3">
 <h3 class="anchored" data-anchor-id="calculate-the-fixed-monthly-payment-for-a-loan.">Calculate the fixed monthly payment for a loan.</h3>
+<p>The loan_payment() function performs a ‘loan_payment’ calculation with robust input validation. It takes three variables; Principal, Rate, and Years; then returns the calculated value. The fixed monthly payment.</p>
 <p>Monthly Loan Payment - <span class="math inline">\(payment = P*(r*(1 + r)^n/((1+r)^n-1)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'loan_payment()' function:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function performs a 'loan_payment' calculation with robust input validation.</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It takes three variables; Principal, Rate, and Years; </span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then returns the calculated value. The fixed monthly payment.</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using user variables:</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">loan_payment</span>(testP,testR,testY)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10.60655</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person borrows $1000, at an annual Rate of .05%, </span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># for 10 Years; their fixed monthly loan payment is ~$10.60655!</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="fu">loan_payment</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5334.956</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person borrows $457488.2, at an annual Rate of 0.1350653%, </span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co"># for 25 Years; their fixed monthly loan payment is ~$5334.956!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With user provided variables:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">loan_payment</span>(testP,testR,testY)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10.60655</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person borrows $1000, at an annual Rate of .05%, </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># for 10 Years; their fixed monthly loan payment is ~$10.60655!</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu">loan_payment</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5334.956</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person borrows $457488.2, at an annual Rate of 0.1350653%, </span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># for 25 Years; their fixed monthly loan payment is ~$5334.956!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
+<section id="amort_schedule" class="level2">
+<h2 class="anchored" data-anchor-id="amort_schedule">amort_schedule()</h2>
 <section id="create-an-amortization-schedule-data-frame-for-a-loan." class="level3">
 <h3 class="anchored" data-anchor-id="create-an-amortization-schedule-data-frame-for-a-loan.">Create an amortization schedule data frame for a loan.</h3>
+<p>The ‘amort_schedule()’ function performs ‘amort_schedule’ calculations with robust input validation. It takes three variables; Principal, Rate, and Years; then returns A data frame showing the breakdown of each payment.</p>
 <p>The ‘amort_schedule’ function relies on two core formulas and a sequential process:</p>
 <p>Formula for the Fixed Monthly Payment (same as loan payment)</p>
 <p>Monthly Loan Payment - <span class="math inline">\(payment = P*(r*(1 + r)^n/((1+r)^n-1)\)</span></p>
@@ -469,120 +476,109 @@ window.Quarto = {
 <p>Principal Paid: <span class="math inline">\(Principal Paid = Payment - Interest\)</span></p>
 <p>Ending Balance: <span class="math inline">\(Ending Balance = Beginning Balance - Principal Paid\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'amort_schedule()' function:</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function performs 'amort_schedule' calculations with robust input validation.</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It takes three variables; Principal, Rate, and Years; </span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then returns A data frame showing the breakdown of each payment.</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using user variables:</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>sched1<span class="ot">&lt;-</span><span class="fu">amort_schedule</span>(testP,testR,testY)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is limited for space</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sched1)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Payment_No Beginning_Balance Payment Interest Principal_Paid Ending_Balance</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1           1000.00   10.61     4.17           6.44         993.56</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          2            993.56   10.61     4.14           6.47         987.09</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          3            987.09   10.61     4.11           6.49         980.60</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          4            980.60   10.61     4.09           6.52         974.08</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          5            974.08   10.61     4.06           6.55         967.53</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          6            967.53   10.61     4.03           6.58         960.96</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>sched2<span class="ot">&lt;-</span><span class="fu">amort_schedule</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is limited for space</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sched2)</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Payment_No Beginning_Balance Payment Interest Principal_Paid Ending_Balance</span></span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1          457488.2 5334.96  5149.23         185.72       457302.5</span></span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          2          457302.5 5334.96  5147.14         187.82       457114.7</span></span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          3          457114.7 5334.96  5145.03         189.93       456924.8</span></span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          4          456924.8 5334.96  5142.89         192.07       456732.7</span></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          5          456732.7 5334.96  5140.73         194.23       456538.5</span></span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          6          456538.5 5334.96  5138.54         196.41       456342.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With user provided variables:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>testP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>testR<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>sched1<span class="ot">&lt;-</span><span class="fu">amort_schedule</span>(testP,testR,testY)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is limited for space</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sched1)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Payment_No Beginning_Balance Payment Interest Principal_Paid Ending_Balance</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1           1000.00   10.61     4.17           6.44         993.56</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          2            993.56   10.61     4.14           6.47         987.09</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          3            987.09   10.61     4.11           6.49         980.60</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          4            980.60   10.61     4.09           6.52         974.08</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          5            974.08   10.61     4.06           6.55         967.53</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          6            967.53   10.61     4.03           6.58         960.96</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>sched2<span class="ot">&lt;-</span><span class="fu">amort_schedule</span>(profiles1<span class="sc">$</span>Principal[<span class="dv">1</span>],profiles1<span class="sc">$</span>Rate[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="co"># The output is limited for space</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sched2)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Payment_No Beginning_Balance Payment Interest Principal_Paid Ending_Balance</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          1          457488.2 5334.96  5149.23         185.72       457302.5</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          2          457302.5 5334.96  5147.14         187.82       457114.7</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          3          457114.7 5334.96  5145.03         189.93       456924.8</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          4          456924.8 5334.96  5142.89         192.07       456732.7</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          5          456732.7 5334.96  5140.73         194.23       456538.5</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          6          456538.5 5334.96  5138.54         196.41       456342.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="return-and-growth-calculations" class="level2">
-<h2 class="anchored" data-anchor-id="return-and-growth-calculations">— 3. Return and Growth Calculations —</h2>
+</section>
+<section id="return-and-growth-calculations" class="level1">
+<h1>— 3. Return and Growth Calculations —</h1>
+<section id="cagr" class="level2">
+<h2 class="anchored" data-anchor-id="cagr">cagr()</h2>
 <section id="calculate-the-compound-annual-growth-rate-cagr-of-an-investment." class="level3">
 <h3 class="anchored" data-anchor-id="calculate-the-compound-annual-growth-rate-cagr-of-an-investment.">Calculate the Compound Annual Growth Rate (CAGR) of an investment.</h3>
+<p>The cagr() function performs a ‘cagr’ calculation with robust input validation. It takes three variables; Start_Value, End_Value, and Years; then returns the calculated value. The Compound Annual Growth Rate (CAGR) of an investment as a decimal.</p>
 <p><span class="math inline">\(CAGR = ((endvalue / startvalue)^(1 / years)) - 1\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'cagr()' function:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function performs a 'cagr' calculation with robust input validation.</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It takes three variables; Start_Value, End_Value, and Years; </span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then returns the calculated value. The Compound Annual Growth Rate (CAGR) </span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># of an investment as a decimal.</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Using user variables:</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>testSV<span class="ot">&lt;-</span><span class="dv">1000</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>testEV<span class="ot">&lt;-</span><span class="dv">15632</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cagr</span>(testSV,testEV,testY)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3164412</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person enters an investment worth $1000, and the investment is </span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># worth $15632 after 10 Years; their CAGR is ~0.3164412!</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With user provided variables:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>testSV<span class="ot">&lt;-</span><span class="dv">1000</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>testEV<span class="ot">&lt;-</span><span class="dv">15632</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>testY<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cagr</span>(testSV,testEV,testY)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3164412</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person enters an investment worth $1000, and the investment is </span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># worth $15632 after 10 Years; their CAGR is ~0.3164412!</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cagr</span>(profiles1<span class="sc">$</span>Start_Value[<span class="dv">1</span>],profiles1<span class="sc">$</span>End_Value[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0333562</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person enters an investment worth $457488.2, and the investment is </span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="co"># worth $1039037 after 25 Years; their CAGR is ~0.0333562!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cagr</span>(profiles1<span class="sc">$</span>Start_Value[<span class="dv">1</span>],profiles1<span class="sc">$</span>End_Value[<span class="dv">1</span>],profiles1<span class="sc">$</span>Years[<span class="dv">1</span>])</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0333562</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person enters an investment worth $457488.2, and the investment is </span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co"># worth $1039037 after 25 Years; their CAGR is ~0.0333562!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
+<section id="simple_return" class="level2">
+<h2 class="anchored" data-anchor-id="simple_return">simple_return()</h2>
 <section id="calculate-the-simple-return-percentage-change-of-an-investment." class="level3">
 <h3 class="anchored" data-anchor-id="calculate-the-simple-return-percentage-change-of-an-investment.">Calculate the Simple Return (percentage change) of an investment.</h3>
+<p>The simple_return() function performs a ‘simple_return’ calculation with robust input validation. It takes two variables; Start_Price and End_Price; then returns the calculated value. The simple return as a decimal (e.g., 0.10 for 10%).</p>
 <p><span class="math inline">\(Simple Return = (endprice - startprice) / startprice\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'simple_return()' function:</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function performs a 'simple_return' calculation with robust input validation.</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It takes two variables; Start_Price and End_Price; </span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then returns the calculated value. The simple return as a decimal (e.g., 0.10 for 10%).</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using user variables:</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>testSP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>testEP<span class="ot">&lt;-</span><span class="dv">15632</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">simple_return</span>(testSP,testEP)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14.632</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person enters an investment that costs $1000, and the investment is </span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># now worth $15632 their simple return rate is ~14.632!</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="fu">simple_return</span>(profiles1<span class="sc">$</span>Start_Price[<span class="dv">1</span>],profiles1<span class="sc">$</span>End_Price[<span class="dv">1</span>])</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.271178</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person enters an investment that costs $457488.2, and the investment is </span></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co"># now worth $1039037 their simple return rate is ~1.271178!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With user provided variables:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>testSP<span class="ot">&lt;-</span><span class="dv">1000</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>testEP<span class="ot">&lt;-</span><span class="dv">15632</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">simple_return</span>(testSP,testEP)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14.632</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person enters an investment that costs $1000, and the investment is </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># now worth $15632 their simple return rate is ~14.632!</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a record from the 'profiles1' data set</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first record in the data set</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>profiles1[<span class="dv">1</span>,]</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Principal      Rate Years N_Compounding Future_Value_Input Start_Value</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  457488.2 0.1350653    25             1            1039037    457488.2</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   End_Value Start_Price End_Price</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   1039037    457488.2   1039037</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function using the 'profiles1[1]' data</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">simple_return</span>(profiles1<span class="sc">$</span>Start_Price[<span class="dv">1</span>],profiles1<span class="sc">$</span>End_Price[<span class="dv">1</span>])</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.271178</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore if a person enters an investment that costs $457488.2, and the investment is </span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># now worth $1039037 their simple return rate is ~1.271178!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -681,7 +677,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/rwalshusf\.quarto\.pub\/httpsrwalshusfquartopubr-programming-journal---robert-walsh");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
