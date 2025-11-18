@@ -22,7 +22,7 @@ My goal was to create an intuitive, accessible tool that helps others easily gra
 
 The process of creating an R package provided significant learning opportunities, particularly in understanding package structure and documentation. Key new skills I have sharpened include the effective use of Roxygen for generating documentation, which assists the creation of the help files and ensured consistent function descriptions. Setting up the DESCRIPTION file involved learning about package metadata, dependencies, and licensing, which are important for package information and attribution. The programming experience highlighted the importance of a well-organized file structure within the package directory for maintainability, installation, and collaboration.
 
-I did encounter some technical challenges during development which mainly revolved around dependency management and ensuring cross-platform compatibility. Resolving these issues often required meticulous debugging and exploring alternative approaches to function implementation. For instance, addressing specific errors related to external package interactions necessitated careful examination of package vignettes and community forums for solutions. 
+I did encounter some technical challenges during development which mainly revolved around dependency management and ensuring cross-platform compatibility. Resolving these issues often required meticulous debugging and exploring alternative approaches to function implementation. For instance, addressing specific errors related to external package interactions necessitated careful examination of package vignettes and community forums for solutions.
 
 Looking ahead, the current package limitations include a lack of comprehensive unit testing and limited support for certain data types. Future enhancements will focus on implementing a robust testing framework to ensure code stability and expand functionality to handle a broader range of input data, potentially incorporating features like advanced visualization options or integration with other analytical tools.
 
@@ -43,9 +43,11 @@ The goal of the 'SimpleFinCalc' R package is to provide a straightforward suite 
 
 ## Installation
 
-You can install the development version of SimpleFinCalc from [GitHub](https://github.com/rwalshUSF/SimpleFinCalc) with:
+You can install the development version of SimpleFinCalc from [GitHub](https://github.com/rwalshUSF/SimpleFinCalc) with the 'devtools' package in R:
 
 ``` r
+# install.packages("devtools")
+# library(devtools)
 # install_github("rwalshUSF/SimpleFinCalc",build_vignettes = TRUE)
 ```
 
@@ -76,6 +78,7 @@ Once the installation is complete, try these Rstudio help commands to access doc
 ```
 
 ## Data
+
 The 'SimpleFinCalc' R package includes a built in data set 'profiles1' to assist in the testing and demonstration of the many functions that the packages includes. The 'profiles1' data set consists of 100 records for financial calculations including synthetic inputs for various loan, investment, and return calculations for use with the functions implemented in the 'SimpleFinCalc' package.
 
 The data set is available when the package is installed and the library is loaded in to the R working environment. The data set can also be referenced with the data() function or ?profiles1 in the R Console.
@@ -100,9 +103,7 @@ summary(profiles1)
 
 ### Calculate the Future Value (FV) of a lump-sum investment (simple interest)
 
-The fv_simple() function performs a 'Simple Future Value' calculation with robust input 
-validation. It takes three variables; Principal, Rate, and Years, and returns 
-the calculated value.
+The fv_simple() function performs a 'Simple Future Value' calculation with robust input validation. It takes three variables; Principal, Rate, and Years, and returns the calculated value.
 
 Simple Future Value - $FV = PV * (1 + r)^n$
 
@@ -130,9 +131,8 @@ fv_simple(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[1])
 ## fv_compound()
 
 ### Calculate the Future Value (FV) of a lump-sum investment (compound interest).
-The fv_compound() function performs a 'Compound Future Value' calculation with robust input 
-validation. It takes four variables; Principal, Rate, Years, and N_Compounds; 
-then returns the calculated value.
+
+The fv_compound() function performs a 'Compound Future Value' calculation with robust input validation. It takes four variables; Principal, Rate, Years, and N_Compounds; then returns the calculated value.
 
 Compound Future Value - $FV = P * (1 + r/n)^(n*t)$
 
@@ -160,9 +160,8 @@ fv_compound(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[1],profiles
 ## pv()
 
 ### Calculate the Present Value (PV) of a future sum of money.
-The pv() function performs a 'Present Value' calculation with robust input validation.
-It takes three variables; Future_Value_Input, Rate, and Years; 
-then returns the calculated value.
+
+The pv() function performs a 'Present Value' calculation with robust input validation. It takes three variables; Future_Value_Input, Rate, and Years; then returns the calculated value.
 
 Present Value - $PV = FV / (1 + r)^n$
 
@@ -191,9 +190,8 @@ pv(profiles1$Future_Value_Input[1],profiles1$Rate[1],profiles1$Years[1])
 ## annuity_payment()
 
 ### Calculate the fixed annuity payment amount for a loan or investment.
-The annuity_payment() function performs an 'annuity_payment' calculation with robust input validation.
-It takes three variables; Principal, Rate, and Years; 
-then returns the calculated value. The regular annual payment amount.
+
+The annuity_payment() function performs an 'annuity_payment' calculation with robust input validation. It takes three variables; Principal, Rate, and Years; then returns the calculated value. The regular annual payment amount.
 
 Fixed Annuity Payment - $payment = P * (r*(1 + r)^n)/((1 + r)^n-1)$
 
@@ -223,9 +221,8 @@ annuity_payment(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[1])
 ## loan_payment()
 
 ### Calculate the fixed monthly payment for a loan.
-The loan_payment() function performs a 'loan_payment' calculation with robust input validation.
-It takes three variables; Principal, Rate, and Years; 
-then returns the calculated value. The fixed monthly payment.
+
+The loan_payment() function performs a 'loan_payment' calculation with robust input validation. It takes three variables; Principal, Rate, and Years; then returns the calculated value. The fixed monthly payment.
 
 Monthly Loan Payment - $payment = P*(r*(1 + r)^n/((1+r)^n-1)$
 
@@ -252,9 +249,8 @@ loan_payment(profiles1$Principal[1],profiles1$Rate[1],profiles1$Years[1])
 ## amort_schedule()
 
 ### Create an amortization schedule data frame for a loan.
-The 'amort_schedule()' function performs 'amort_schedule' calculations with robust input validation.
-It takes three variables; Principal, Rate, and Years; 
-then returns A data frame showing the breakdown of each payment.
+
+The 'amort_schedule()' function performs 'amort_schedule' calculations with robust input validation. It takes three variables; Principal, Rate, and Years; then returns A data frame showing the breakdown of each payment.
 
 The 'amort_schedule' function relies on two core formulas and a sequential process:
 
@@ -297,10 +293,8 @@ head(sched2)
 ## cagr()
 
 ### Calculate the Compound Annual Growth Rate (CAGR) of an investment.
-The cagr() function performs a 'cagr' calculation with robust input validation.
-It takes three variables; Start_Value, End_Value, and Years; 
-then returns the calculated value. The Compound Annual Growth Rate (CAGR) 
-of an investment as a decimal.
+
+The cagr() function performs a 'cagr' calculation with robust input validation. It takes three variables; Start_Value, End_Value, and Years; then returns the calculated value. The Compound Annual Growth Rate (CAGR) of an investment as a decimal.
 
 $CAGR = ((endvalue / startvalue)^(1 / years)) - 1$
 
@@ -327,9 +321,8 @@ cagr(profiles1$Start_Value[1],profiles1$End_Value[1],profiles1$Years[1])
 ## simple_return()
 
 ### Calculate the Simple Return (percentage change) of an investment.
-The simple_return() function performs a 'simple_return' calculation with robust input validation.
-It takes two variables; Start_Price and End_Price; 
-then returns the calculated value. The simple return as a decimal (e.g., 0.10 for 10%).
+
+The simple_return() function performs a 'simple_return' calculation with robust input validation. It takes two variables; Start_Price and End_Price; then returns the calculated value. The simple return as a decimal (e.g., 0.10 for 10%).
 
 $Simple Return = (endprice - startprice) / startprice$
 
